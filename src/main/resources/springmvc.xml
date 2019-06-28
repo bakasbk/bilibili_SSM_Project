@@ -16,7 +16,7 @@
 
 	<context:component-scan base-package="com.zilizili.web"></context:component-scan>
 
-	<mvc:annotation-driven conversion-service="conversionService">
+	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<!-- 设置fastjson消息转换器 -->
 			<bean
