@@ -46,6 +46,8 @@
 	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
 	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/favicons/" mapping="/favicons/**"></mvc:resources>
+	<mvc:resources location="/video/" mapping="/video/**"></mvc:resources>
 
 	<!-- 全局异常设置 -->
 	<bean
