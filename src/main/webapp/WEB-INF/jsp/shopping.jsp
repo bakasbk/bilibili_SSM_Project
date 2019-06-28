@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>会员购</title>
-<link rel="shortcut icon" href="favicons/1.png">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/index.css">
+<link rel="shortcut icon" href="../favicons/1.png">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
 	<header id="header">
@@ -21,13 +21,13 @@
 			<div class="page-width clearfix">
 				<div class="header-top__nav">
 					<ul>
-						<li class="item item-home"><a href="index.jsp">首页</a></li>
-						<li class="item"><a href="shopping.jsp" style="color: red;">会员购</a></li>
+						<li class="item item-home"><a href="../index.jsp">首页</a></li>
+						<li class="item"><a href="page/shopping" style="color: red;">会员购</a></li>
 					</ul>
 				</div>
 				<div class="header-top__user">
 					<div class="login-box">
-						<a href="login.jsp">登录</a> <span></span> <a href="regist.jsp">注册</a>
+						<a href="page/login">登录</a> <span></span> <a href="page/regist">注册</a>
 					</div>
 					<div class="user-post">
 						<a href="#" class="link">订单中心</a>
@@ -83,18 +83,17 @@
 			<li class="footer-icon">
 				<div class="cont">
 					<a href="#" class="app"> <i></i> <em>手机端下载</em> <img
-						src="images/app-qrcode.png" alt="#">
+						src="../images/app-qrcode.png" alt="#">
 					</a> <a href="#" class="weibo"> <i></i> <em>新浪微博</em> <img
-						src="images/weibo-qrcode.png" alt="#">
+						src="../images/weibo-qrcode.png" alt="#">
 					</a> <a href="#" class="weixin"> <i></i> <em>官方微信</em> <img
-						src="images/weixin-arcode.gif" alt="#">
+						src="../images/weixin-arcode.gif" alt="#">
 					</a>
 				</div>
 			</li>
 		</ul>
 	</div>
 	</footer>
-	<script src="js/Jquery-V3.2.1.js"></script>
-	<script src="js/script.js"></script>
+	<script src="../js/Jquery-V3.2.1.js"></script>
 </body>
 </html>

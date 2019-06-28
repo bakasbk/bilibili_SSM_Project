@@ -117,7 +117,7 @@
                   </div>
                 </div>
               </li>
-              <li class="item"><a href="shopping.jsp">会员购</a></li>
+              <li class="item"><a href="page/shopping">会员购</a></li>
               <li class="item">
                 <a href="#">移动端</a>
                 <!-- <div class="header-app header-hover">
