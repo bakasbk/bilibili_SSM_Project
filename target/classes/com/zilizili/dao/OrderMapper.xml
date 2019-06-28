@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zilizili.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.zilizili.pojo.Order" >
+    <id column="OrderId" property="orderid" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="orderprice" property="orderprice" jdbcType="DOUBLE" />
+    <result column="stateCode" property="statecode" jdbcType="INTEGER" />
+    <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
+    <result column="completiontime" property="completiontime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    OrderId, user_id, commodityId, orderprice, stateCode, orderTime, completiontime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zilizili.pojo.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where OrderId = #{orderid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from order
+    where OrderId = #{orderid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zilizili.pojo.OrderExample" >
+    delete from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zilizili.pojo.Order" >
+    insert into order (OrderId, user_id, commodityId, 
+      orderprice, stateCode, orderTime, 
+      completiontime)
+    values (#{orderid,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{commodityid,jdbcType=VARCHAR}, 
+      #{orderprice,jdbcType=DOUBLE}, #{statecode,jdbcType=INTEGER}, #{ordertime,jdbcType=TIMESTAMP}, 
+      #{completiontime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zilizili.pojo.Order" >
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        OrderId,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="orderprice != null" >
+        orderprice,
+      </if>
+      <if test="statecode != null" >
+        stateCode,
+      </if>
+      <if test="ordertime != null" >
+        orderTime,
+      </if>
+      <if test="completiontime != null" >
+        completiontime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderprice != null" >
+        #{orderprice,jdbcType=DOUBLE},
+      </if>
+      <if test="statecode != null" >
+        #{statecode,jdbcType=INTEGER},
+      </if>
+      <if test="ordertime != null" >
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completiontime != null" >
+        #{completiontime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zilizili.pojo.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order
+    <set >
+      <if test="record.orderid != null" >
+        OrderId = #{record.orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityid != null" >
+        commodityId = #{record.commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderprice != null" >
+        orderprice = #{record.orderprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.statecode != null" >
+        stateCode = #{record.statecode,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordertime != null" >
+        orderTime = #{record.ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.completiontime != null" >
+        completiontime = #{record.completiontime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order
+    set OrderId = #{record.orderid,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      commodityId = #{record.commodityid,jdbcType=VARCHAR},
+      orderprice = #{record.orderprice,jdbcType=DOUBLE},
+      stateCode = #{record.statecode,jdbcType=INTEGER},
+      orderTime = #{record.ordertime,jdbcType=TIMESTAMP},
+      completiontime = #{record.completiontime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zilizili.pojo.Order" >
+    update order
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        commodityId = #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderprice != null" >
+        orderprice = #{orderprice,jdbcType=DOUBLE},
+      </if>
+      <if test="statecode != null" >
+        stateCode = #{statecode,jdbcType=INTEGER},
+      </if>
+      <if test="ordertime != null" >
+        orderTime = #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completiontime != null" >
+        completiontime = #{completiontime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where OrderId = #{orderid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zilizili.pojo.Order" >
+    update order
+    set user_id = #{userId,jdbcType=VARCHAR},
+      commodityId = #{commodityid,jdbcType=VARCHAR},
+      orderprice = #{orderprice,jdbcType=DOUBLE},
+      stateCode = #{statecode,jdbcType=INTEGER},
+      orderTime = #{ordertime,jdbcType=TIMESTAMP},
+      completiontime = #{completiontime,jdbcType=TIMESTAMP}
+    where OrderId = #{orderid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zilizili.dao.CommodityMapper" >
+  <resultMap id="BaseResultMap" type="com.zilizili.pojo.Commodity" >
+    <id column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="commodityName" property="commodityname" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="commodityImg" property="commodityimg" jdbcType="VARCHAR" />
+    <result column="commodityPrice" property="commodityprice" jdbcType="DOUBLE" />
+    <result column="commodityStock" property="commoditystock" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    commodityId, commodityName, description, commodityImg, commodityPrice, commodityStock
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zilizili.pojo.CommodityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from commodity
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zilizili.pojo.CommodityExample" >
+    delete from commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zilizili.pojo.Commodity" >
+    insert into commodity (commodityId, commodityName, description, 
+      commodityImg, commodityPrice, commodityStock
+      )
+    values (#{commodityid,jdbcType=VARCHAR}, #{commodityname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{commodityimg,jdbcType=VARCHAR}, #{commodityprice,jdbcType=DOUBLE}, #{commoditystock,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zilizili.pojo.Commodity" >
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="commodityname != null" >
+        commodityName,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="commodityimg != null" >
+        commodityImg,
+      </if>
+      <if test="commodityprice != null" >
+        commodityPrice,
+      </if>
+      <if test="commoditystock != null" >
+        commodityStock,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null" >
+        #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityimg != null" >
+        #{commodityimg,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityprice != null" >
+        #{commodityprice,jdbcType=DOUBLE},
+      </if>
+      <if test="commoditystock != null" >
+        #{commoditystock,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zilizili.pojo.CommodityExample" resultType="java.lang.Integer" >
+    select count(*) from commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update commodity
+    <set >
+      <if test="record.commodityid != null" >
+        commodityId = #{record.commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityname != null" >
+        commodityName = #{record.commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityimg != null" >
+        commodityImg = #{record.commodityimg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityprice != null" >
+        commodityPrice = #{record.commodityprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.commoditystock != null" >
+        commodityStock = #{record.commoditystock,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update commodity
+    set commodityId = #{record.commodityid,jdbcType=VARCHAR},
+      commodityName = #{record.commodityname,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      commodityImg = #{record.commodityimg,jdbcType=VARCHAR},
+      commodityPrice = #{record.commodityprice,jdbcType=DOUBLE},
+      commodityStock = #{record.commoditystock,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zilizili.pojo.Commodity" >
+    update commodity
+    <set >
+      <if test="commodityname != null" >
+        commodityName = #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityimg != null" >
+        commodityImg = #{commodityimg,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityprice != null" >
+        commodityPrice = #{commodityprice,jdbcType=DOUBLE},
+      </if>
+      <if test="commoditystock != null" >
+        commodityStock = #{commoditystock,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zilizili.pojo.Commodity" >
+    update commodity
+    set commodityName = #{commodityname,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      commodityImg = #{commodityimg,jdbcType=VARCHAR},
+      commodityPrice = #{commodityprice,jdbcType=DOUBLE},
+      commodityStock = #{commoditystock,jdbcType=VARCHAR}
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+  </update>
+</mapper>
