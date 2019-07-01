@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zilizili.dao.CommentMapper" >
-  <resultMap id="BaseResultMap" type="com.zilizili.pojo.Comment" >
-    <result column="videoID" property="videoid" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="time" property="time" jdbcType="TIMESTAMP" />
+<mapper namespace="com.zilizili.dao.CartMapper" >
+  <resultMap id="BaseResultMap" type="com.zilizili.pojo.Cart" >
+    <id column="cart_id" property="cartId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="commodity_id" property="commodityId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    videoID, content, user_id, time
+    cart_id, user_id, commodity_id
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zilizili.pojo.CommentExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zilizili.pojo.CartExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from comment
+    from cart
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,69 +81,70 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.zilizili.pojo.CommentExample" >
-    delete from comment
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cart
+    where cart_id = #{cartId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cart
+    where cart_id = #{cartId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zilizili.pojo.CartExample" >
+    delete from cart
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zilizili.pojo.Comment" >
-    insert into comment (videoID, content, user_id, 
-      time)
-    values (#{videoid,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{time,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.zilizili.pojo.Cart" >
+    insert into cart (cart_id, user_id, commodity_id
+      )
+    values (#{cartId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{commodityId,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.zilizili.pojo.Comment" >
-    insert into comment
+  <insert id="insertSelective" parameterType="com.zilizili.pojo.Cart" >
+    insert into cart
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="videoid != null" >
-        videoID,
-      </if>
-      <if test="content != null" >
-        content,
+      <if test="cartId != null" >
+        cart_id,
       </if>
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="time != null" >
-        time,
+      <if test="commodityId != null" >
+        commodity_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="videoid != null" >
-        #{videoid,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+      <if test="cartId != null" >
+        #{cartId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        #{time,jdbcType=TIMESTAMP},
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zilizili.pojo.CommentExample" resultType="java.lang.Integer" >
-    select count(*) from comment
+  <select id="countByExample" parameterType="com.zilizili.pojo.CartExample" resultType="java.lang.Integer" >
+    select count(*) from cart
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update comment
+    update cart
     <set >
-      <if test="record.videoid != null" >
-        videoID = #{record.videoid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.content != null" >
-        content = #{record.content,jdbcType=VARCHAR},
+      <if test="record.cartId != null" >
+        cart_id = #{record.cartId,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.time != null" >
-        time = #{record.time,jdbcType=TIMESTAMP},
+      <if test="record.commodityId != null" >
+        commodity_id = #{record.commodityId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,13 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update comment
-    set videoID = #{record.videoid,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      time = #{record.time,jdbcType=TIMESTAMP}
+    update cart
+    set cart_id = #{record.cartId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      commodity_id = #{record.commodityId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zilizili.pojo.Cart" >
+    update cart
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null" >
+        commodity_id = #{commodityId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cart_id = #{cartId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zilizili.pojo.Cart" >
+    update cart
+    set user_id = #{userId,jdbcType=VARCHAR},
+      commodity_id = #{commodityId,jdbcType=VARCHAR}
+    where cart_id = #{cartId,jdbcType=VARCHAR}
   </update>
 </mapper>

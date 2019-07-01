@@ -3,7 +3,7 @@ package com.zilizili.pojo;
 import java.util.Date;
 
 public class Comment {
-    private Integer videoid;
+    private String videoid;
 
     private String content;
 
@@ -11,12 +11,12 @@ public class Comment {
 
     private Date time;
 
-    public Integer getVideoid() {
+    public String getVideoid() {
         return videoid;
     }
 
-    public void setVideoid(Integer videoid) {
-        this.videoid = videoid;
+    public void setVideoid(String videoid) {
+        this.videoid = videoid == null ? null : videoid.trim();
     }
 
     public String getContent() {

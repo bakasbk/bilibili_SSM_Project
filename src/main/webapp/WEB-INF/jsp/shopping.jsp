@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../css/shopping/home.css">
 </head>
 <body>
+
 	<header id="header">
 	<div id="page_top">
 		<div class="bg-wrap">
@@ -70,8 +71,7 @@
 					<div class="project-list-item-img"
 						style="background-image: url(&quot;//i1.hdslb.com/bfs/openplatform/201905/imlxDXYexx..w.jpeg@350w_466h.jpeg&quot;);"></div>
 					<div class="project-list-item-detail">
-						<div class="project-list-item-title">上海·第十五届中国国际动漫游戏博览会CCG
-							EXPO 2019</div>
+						<div class="project-list-item-title"><a href="../shopping/getAllCommodity">aaaaaaaaaaaaaaaa</a></div>
 						<div class="project-list-item-time">
 							<span class="icon time-icon"></span>2019.07.04 - 07.08
 						</div>
@@ -92,6 +92,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="project-list-item">
 					<div class="project-list-item-img"
 						style="background-image: url(&quot;//i1.hdslb.com/bfs/openplatform/201904/imAN0qlXS2yPs.jpeg@350w_466h.jpeg&quot;);"></div>
@@ -504,7 +505,7 @@
 		<div class="footer">
 			<div class="footer-wrp">
 				<div class="border"></div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -550,5 +551,16 @@
 	</div>
 	</footer>
 	<script src="../js/Jquery-V3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$post("../shopping/getAllCommodity",function(data){
+				alert(data);
+				
+			});
+			
+		})
+	
+	
+	</script>
 </body>
 </html>

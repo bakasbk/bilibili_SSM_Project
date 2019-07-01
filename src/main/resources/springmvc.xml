@@ -50,14 +50,14 @@
 	<mvc:resources location="/video/" mapping="/video/**"></mvc:resources>
 
 	<!-- 全局异常设置 -->
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
 				<prop key="java.lang.Exception">error</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> -->
 
 	<!-- 文件上传 -->
 	<bean id="multipartResolver"
@@ -65,6 +65,8 @@
 		<property name="defaultEncoding" value="UTF-8"></property>
 		<property name="maxUploadSize" value="1048576000000000"></property>
 	</bean>
+
+
 
 </beans>
 

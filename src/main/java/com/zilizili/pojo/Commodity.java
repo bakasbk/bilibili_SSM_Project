@@ -17,7 +17,14 @@ public class Commodity {
         return commodityid;
     }
 
-    public void setCommodityid(String commodityid) {
+    @Override
+	public String toString() {
+		return "Commodity [commodityid=" + commodityid + ", commodityname=" + commodityname + ", description="
+				+ description + ", commodityimg=" + commodityimg + ", commodityprice=" + commodityprice
+				+ ", commoditystock=" + commoditystock + "]";
+	}
+
+	public void setCommodityid(String commodityid) {
         this.commodityid = commodityid == null ? null : commodityid.trim();
     }
 

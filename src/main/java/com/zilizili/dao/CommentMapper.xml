@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zilizili.dao.CommentMapper" >
   <resultMap id="BaseResultMap" type="com.zilizili.pojo.Comment" >
-    <result column="videoID" property="videoid" jdbcType="INTEGER" />
+    <result column="videoID" property="videoid" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="time" property="time" jdbcType="TIMESTAMP" />
@@ -91,7 +91,7 @@
   <insert id="insert" parameterType="com.zilizili.pojo.Comment" >
     insert into comment (videoID, content, user_id, 
       time)
-    values (#{videoid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+    values (#{videoid,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{time,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.zilizili.pojo.Comment" >
@@ -112,7 +112,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="videoid != null" >
-        #{videoid,jdbcType=INTEGER},
+        #{videoid,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
@@ -135,7 +135,7 @@
     update comment
     <set >
       <if test="record.videoid != null" >
-        videoID = #{record.videoid,jdbcType=INTEGER},
+        videoID = #{record.videoid,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null" >
         content = #{record.content,jdbcType=VARCHAR},
@@ -153,7 +153,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update comment
-    set videoID = #{record.videoid,jdbcType=INTEGER},
+    set videoID = #{record.videoid,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       time = #{record.time,jdbcType=TIMESTAMP}
