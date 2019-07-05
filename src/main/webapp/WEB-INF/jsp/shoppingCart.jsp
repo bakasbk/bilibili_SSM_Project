@@ -31,7 +31,7 @@
 </style>
 </head>
 <body>
-<%@include file="head.jsp"%>
+<%@include file="head2.jsp"%>
 
 	<div id="myDiv">
 		<div class="whole-detail-info-wrapper">
@@ -166,9 +166,6 @@
 			//${pageContext.request.contextPath}
 			//提交
 			$("#submit").click(function(){
-				alert(goodId);
-				alert(userId);
-				alert(count);
 				$.post("${pageContext.request.contextPath}/shopping/Buy/"+goodId+"/"+userId+"/"+count,"",function(){
 					
 					location.href="${pageContext.request.contextPath}/page/orderCart/";

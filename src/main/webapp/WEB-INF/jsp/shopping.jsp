@@ -36,7 +36,7 @@
 </style>
 </head>
 <body>
-<%@include file="head.jsp"%>
+<%@include file="head2.jsp"%>
 
 	<!-- 商品列表 -->
 	<div class="tab-content">
@@ -145,22 +145,21 @@
 				if(stock>1){
 					if(map.addCartRs==1){
 						alert("成功将"+map.good.commodityname+"加入到购物车！");
+						var goodNum=1;
+						location.href="${pageContext.request.contextPath}/shopping/goOrder/"+goodId+"/"+goodNum;
 					}else{
 						alert("票已售空！");
 					}
 				}
-				
-				
 			},"JSON");		
 		}
 		
 		//详细页
 		function goGood(goodId){
 			var userId = $("#username-hidden").val();
-				location.href="${pageContext.request.contextPath}/shopping/goGood/"+goodId+"/"+userId;
+				location.href="${pageContext.request.contextPath}/shopping/goOrder/"+goodId+"/"+userId;
 		}
 		
-		//点击商品 进入详细页
 		
 		
 		

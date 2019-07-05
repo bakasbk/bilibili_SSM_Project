@@ -115,7 +115,6 @@ public class ShoppingController {
 		
 	}
 	
-	
 	@RequestMapping("/goGood/{goodId}/{userId}")
 	public String goGood(Model model,@PathVariable("goodId")String goodId, @PathVariable("userId") String userId) {
 		System.out.println("goGood");
@@ -125,6 +124,32 @@ public class ShoppingController {
 		model.addAttribute("good", commodity);
 		return "shoppingCart";
 		
+	}
+
+	//获得购物车内容
+	@ResponseBody
+	@RequestMapping("/getCart/{userId}")
+	public Map<String, Object> getCart(@PathVariable("userId")String userId){
+		System.out.println("getCart");
+		Map<String, Object> map = new HashMap<>();
+
+		List<Cart> list = cartService.getCartByUserId(userId);
+		
+		map.put("list",list);
+		
+		return map;
+	}
+
+	//结算页面
+	@RequestMapping("/goOrder/{goodId}/{goodNum}")
+	public String goOrder(Model model,@PathVariable("goodId")String goodId,@PathVariable("goodNum")String num) {
+		System.out.println();
+		
+		Commodity commodity = service.getCommodity(goodId);
+		
+		model.addAttribute("good",commodity);
+		model.addAttribute("goodNum", num);
+		return "order";
 	}
 
 }
