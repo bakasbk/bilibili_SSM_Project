@@ -9,6 +9,7 @@
     <result column="videoName" property="videoname" jdbcType="VARCHAR" />
     <result column="videoPlayCount" property="videoplaycount" jdbcType="INTEGER" />
     <result column="uploadTime" property="uploadtime" jdbcType="TIMESTAMP" />
+    <result column="videoimg" property="videoimg" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    videoID, user_id, videoSrc, videoTime, videoName, videoPlayCount, uploadTime
+    videoID, user_id, videoSrc, videoTime, videoName, videoPlayCount, uploadTime, videoimg
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zilizili.pojo.VideoExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.zilizili.pojo.Video" >
     insert into video (videoID, user_id, videoSrc, 
       videoTime, videoName, videoPlayCount, 
-      uploadTime)
+      uploadTime, videoimg)
     values (#{videoid,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{videosrc,jdbcType=VARCHAR}, 
       #{videotime,jdbcType=VARCHAR}, #{videoname,jdbcType=VARCHAR}, #{videoplaycount,jdbcType=INTEGER}, 
-      #{uploadtime,jdbcType=TIMESTAMP})
+      #{uploadtime,jdbcType=TIMESTAMP}, #{videoimg,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zilizili.pojo.Video" >
     insert into video
@@ -133,6 +134,9 @@
       <if test="uploadtime != null" >
         uploadTime,
       </if>
+      <if test="videoimg != null" >
+        videoimg,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="videoid != null" >
@@ -155,6 +159,9 @@
       </if>
       <if test="uploadtime != null" >
         #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoimg != null" >
+        #{videoimg,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.uploadtime != null" >
         uploadTime = #{record.uploadtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.videoimg != null" >
+        videoimg = #{record.videoimg,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       videoTime = #{record.videotime,jdbcType=VARCHAR},
       videoName = #{record.videoname,jdbcType=VARCHAR},
       videoPlayCount = #{record.videoplaycount,jdbcType=INTEGER},
-      uploadTime = #{record.uploadtime,jdbcType=TIMESTAMP}
+      uploadTime = #{record.uploadtime,jdbcType=TIMESTAMP},
+      videoimg = #{record.videoimg,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="uploadtime != null" >
         uploadTime = #{uploadtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="videoimg != null" >
+        videoimg = #{videoimg,jdbcType=VARCHAR},
+      </if>
     </set>
     where videoID = #{videoid,jdbcType=VARCHAR}
   </update>
@@ -237,7 +251,8 @@
       videoTime = #{videotime,jdbcType=VARCHAR},
       videoName = #{videoname,jdbcType=VARCHAR},
       videoPlayCount = #{videoplaycount,jdbcType=INTEGER},
-      uploadTime = #{uploadtime,jdbcType=TIMESTAMP}
+      uploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+      videoimg = #{videoimg,jdbcType=VARCHAR}
     where videoID = #{videoid,jdbcType=VARCHAR}
   </update>
 </mapper>

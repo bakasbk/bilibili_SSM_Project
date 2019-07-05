@@ -26,9 +26,9 @@ public class CommodityServiceImpl implements CommodityService {
 		return mapper.selectByExample(example);
 	}
 
-	public Commodity getCommodity(){
+	public Commodity getCommodity(String id){
 		System.out.println("111111111"+driver);
-		return mapper.selectByPrimaryKey("111");
+		return mapper.selectByPrimaryKey(id);
 	}
 	
 }

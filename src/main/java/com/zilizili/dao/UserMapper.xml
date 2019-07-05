@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zilizili.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.zilizili.pojo.User" >
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="account" property="account" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -11,6 +11,7 @@
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="pay_pwd" property="payPwd" jdbcType="VARCHAR" />
     <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, phone, account, password, headImg_url, bank_card, address, pay_pwd, true_name
+    user_id, phone, account, password, headImg_url, bank_card, address, pay_pwd, true_name, 
+    email
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zilizili.pojo.UserExample" >
     select
@@ -87,15 +89,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.zilizili.pojo.UserExample" >
     delete from user
@@ -106,12 +108,12 @@
   <insert id="insert" parameterType="com.zilizili.pojo.User" >
     insert into user (user_id, phone, account, 
       password, headImg_url, bank_card, 
-      address, pay_pwd, true_name
-      )
-    values (#{userId,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      address, pay_pwd, true_name, 
+      email)
+    values (#{userId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{headimgUrl,jdbcType=VARCHAR}, #{bankCard,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{payPwd,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}
-      )
+      #{address,jdbcType=VARCHAR}, #{payPwd,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zilizili.pojo.User" >
     insert into user
@@ -143,10 +145,13 @@
       <if test="trueName != null" >
         true_name,
       </if>
+      <if test="email != null" >
+        email,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
         #{phone,jdbcType=VARCHAR},
@@ -172,6 +177,9 @@
       <if test="trueName != null" >
         #{trueName,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.zilizili.pojo.UserExample" resultType="java.lang.Integer" >
@@ -184,7 +192,7 @@
     update user
     <set >
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null" >
         phone = #{record.phone,jdbcType=VARCHAR},
@@ -210,6 +218,9 @@
       <if test="record.trueName != null" >
         true_name = #{record.trueName,jdbcType=VARCHAR},
       </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -217,7 +228,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update user
-    set user_id = #{record.userId,jdbcType=INTEGER},
+    set user_id = #{record.userId,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       account = #{record.account,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
@@ -225,7 +236,8 @@
       bank_card = #{record.bankCard,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       pay_pwd = #{record.payPwd,jdbcType=VARCHAR},
-      true_name = #{record.trueName,jdbcType=VARCHAR}
+      true_name = #{record.trueName,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,8 +269,11 @@
       <if test="trueName != null" >
         true_name = #{trueName,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
     </set>
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zilizili.pojo.User" >
     update user
@@ -269,7 +284,8 @@
       bank_card = #{bankCard,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       pay_pwd = #{payPwd,jdbcType=VARCHAR},
-      true_name = #{trueName,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=INTEGER}
+      true_name = #{trueName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

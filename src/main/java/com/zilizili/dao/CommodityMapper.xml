@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zilizili.dao.CommodityMapper" >
-
   <resultMap id="BaseResultMap" type="com.zilizili.pojo.Commodity" >
     <id column="commodityId" property="commodityid" jdbcType="VARCHAR" />
     <result column="commodityName" property="commodityname" jdbcType="VARCHAR" />
@@ -9,8 +8,9 @@
     <result column="commodityImg" property="commodityimg" jdbcType="VARCHAR" />
     <result column="commodityPrice" property="commodityprice" jdbcType="DOUBLE" />
     <result column="commodityStock" property="commoditystock" jdbcType="VARCHAR" />
+    <result column="commodityAddress" property="commodityaddress" jdbcType="VARCHAR" />
+    <result column="commodityTime" property="commoditytime" jdbcType="VARCHAR" />
   </resultMap>
-  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -70,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    commodityId, commodityName, description, commodityImg, commodityPrice, commodityStock
+    commodityId, commodityName, description, commodityImg, commodityPrice, commodityStock, 
+    commodityAddress, commodityTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zilizili.pojo.CommodityExample" >
     select
@@ -104,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="com.zilizili.pojo.Commodity" >
     insert into commodity (commodityId, commodityName, description, 
-      commodityImg, commodityPrice, commodityStock
-      )
+      commodityImg, commodityPrice, commodityStock, 
+      commodityAddress, commodityTime)
     values (#{commodityid,jdbcType=VARCHAR}, #{commodityname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{commodityimg,jdbcType=VARCHAR}, #{commodityprice,jdbcType=DOUBLE}, #{commoditystock,jdbcType=VARCHAR}
-      )
+      #{commodityimg,jdbcType=VARCHAR}, #{commodityprice,jdbcType=DOUBLE}, #{commoditystock,jdbcType=VARCHAR}, 
+      #{commodityaddress,jdbcType=VARCHAR}, #{commoditytime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zilizili.pojo.Commodity" >
     insert into commodity
@@ -131,6 +132,12 @@
       <if test="commoditystock != null" >
         commodityStock,
       </if>
+      <if test="commodityaddress != null" >
+        commodityAddress,
+      </if>
+      <if test="commoditytime != null" >
+        commodityTime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="commodityid != null" >
@@ -150,6 +157,12 @@
       </if>
       <if test="commoditystock != null" >
         #{commoditystock,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityaddress != null" >
+        #{commodityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditytime != null" >
+        #{commoditytime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -180,6 +193,12 @@
       <if test="record.commoditystock != null" >
         commodityStock = #{record.commoditystock,jdbcType=VARCHAR},
       </if>
+      <if test="record.commodityaddress != null" >
+        commodityAddress = #{record.commodityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commoditytime != null" >
+        commodityTime = #{record.commoditytime,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -192,7 +211,9 @@
       description = #{record.description,jdbcType=VARCHAR},
       commodityImg = #{record.commodityimg,jdbcType=VARCHAR},
       commodityPrice = #{record.commodityprice,jdbcType=DOUBLE},
-      commodityStock = #{record.commoditystock,jdbcType=VARCHAR}
+      commodityStock = #{record.commoditystock,jdbcType=VARCHAR},
+      commodityAddress = #{record.commodityaddress,jdbcType=VARCHAR},
+      commodityTime = #{record.commoditytime,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -215,6 +236,12 @@
       <if test="commoditystock != null" >
         commodityStock = #{commoditystock,jdbcType=VARCHAR},
       </if>
+      <if test="commodityaddress != null" >
+        commodityAddress = #{commodityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditytime != null" >
+        commodityTime = #{commoditytime,jdbcType=VARCHAR},
+      </if>
     </set>
     where commodityId = #{commodityid,jdbcType=VARCHAR}
   </update>
@@ -224,7 +251,9 @@
       description = #{description,jdbcType=VARCHAR},
       commodityImg = #{commodityimg,jdbcType=VARCHAR},
       commodityPrice = #{commodityprice,jdbcType=DOUBLE},
-      commodityStock = #{commoditystock,jdbcType=VARCHAR}
+      commodityStock = #{commoditystock,jdbcType=VARCHAR},
+      commodityAddress = #{commodityaddress,jdbcType=VARCHAR},
+      commodityTime = #{commoditytime,jdbcType=VARCHAR}
     where commodityId = #{commodityid,jdbcType=VARCHAR}
   </update>
 </mapper>

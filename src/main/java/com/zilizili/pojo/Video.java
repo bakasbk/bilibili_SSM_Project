@@ -17,6 +17,8 @@ public class Video {
 
     private Date uploadtime;
 
+    private String videoimg;
+
     public String getVideoid() {
         return videoid;
     }
@@ -71,5 +73,13 @@ public class Video {
 
     public void setUploadtime(Date uploadtime) {
         this.uploadtime = uploadtime;
+    }
+
+    public String getVideoimg() {
+        return videoimg;
+    }
+
+    public void setVideoimg(String videoimg) {
+        this.videoimg = videoimg == null ? null : videoimg.trim();
     }
 }

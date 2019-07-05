@@ -13,18 +13,15 @@ public class Commodity {
 
     private String commoditystock;
 
+    private String commodityaddress;
+
+    private String commoditytime;
+
     public String getCommodityid() {
         return commodityid;
     }
 
-    @Override
-	public String toString() {
-		return "Commodity [commodityid=" + commodityid + ", commodityname=" + commodityname + ", description="
-				+ description + ", commodityimg=" + commodityimg + ", commodityprice=" + commodityprice
-				+ ", commoditystock=" + commoditystock + "]";
-	}
-
-	public void setCommodityid(String commodityid) {
+    public void setCommodityid(String commodityid) {
         this.commodityid = commodityid == null ? null : commodityid.trim();
     }
 
@@ -66,5 +63,21 @@ public class Commodity {
 
     public void setCommoditystock(String commoditystock) {
         this.commoditystock = commoditystock == null ? null : commoditystock.trim();
+    }
+
+    public String getCommodityaddress() {
+        return commodityaddress;
+    }
+
+    public void setCommodityaddress(String commodityaddress) {
+        this.commodityaddress = commodityaddress == null ? null : commodityaddress.trim();
+    }
+
+    public String getCommoditytime() {
+        return commoditytime;
+    }
+
+    public void setCommoditytime(String commoditytime) {
+        this.commoditytime = commoditytime == null ? null : commoditytime.trim();
     }
 }

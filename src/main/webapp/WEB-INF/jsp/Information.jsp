@@ -7,20 +7,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet"
-	href="css/info/jiazaitoubu.css"
+	href="${pageContext.request.contextPath}/css/info/jiazaitoubu.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="css/info/css.css"
+	href="${pageContext.request.contextPath}/css/info/css.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="css/info/center.css"
+	href="${pageContext.request.contextPath}/css/info/center.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="css/info/city.css"
+	href="${pageContext.request.contextPath}/css/info/city.css"
 	type="text/css" />
 
 <script
-	src="js/Jquery-V3.2.1.js"></script>
+	src="${pageContext.request.contextPath}/js/Jquery-V3.2.1.js"></script>
 <title>屄哩屄哩-登录密码修改</title>
 </head>
 <body>
@@ -70,13 +70,13 @@ window.onload=function(){
 			<div class="centers_listm">
 				<div class="centers_listm_one">
 					<img
-						src="images/info/zshy.png" />
+						src="${pageContext.request.contextPath}/images/info/zshy.png" />
 					<em>会员中心</em>
 				</div>
 				<!--一条开始-->
 				<div class="centers_listm_one_in">
 					<img
-						src="images/info/shezhi.png" />
+						src="${pageContext.request.contextPath}/images/info/shezhi.png" />
 					<em>资料管理</em> <b></b>
 				</div>
 				<span class="gjszmdm"> <a href="Information.sf"
@@ -87,7 +87,7 @@ window.onload=function(){
 				<!--一条开始-->
 				<div class="centers_listm_one_in">
 					<img
-						src="images/info/ddgl.png" />
+						src="${pageContext.request.contextPath}/images/info/ddgl.png" />
 					<em>订单管理</em> <b></b>
 				</div>
 				<span class="gjszmdm"> <a href="Order.sf" class="center_in_self"><font>我的订单</font></a>

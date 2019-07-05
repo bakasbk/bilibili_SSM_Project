@@ -11,5 +11,10 @@ public interface CommodityService {
 	 */
 	List<Commodity> getAllCommodity();
 	
-	Commodity getCommodity();
+	/**
+	 * 根据id返回对象
+	 * @param id
+	 * @return
+	 */
+	Commodity getCommodity(String id);
 }

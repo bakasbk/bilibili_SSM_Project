@@ -513,6 +513,146 @@ public class CommodityExample {
             addCriterion("commodityStock not between", value1, value2, "commoditystock");
             return (Criteria) this;
         }
+
+        public Criteria andCommodityaddressIsNull() {
+            addCriterion("commodityAddress is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressIsNotNull() {
+            addCriterion("commodityAddress is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressEqualTo(String value) {
+            addCriterion("commodityAddress =", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressNotEqualTo(String value) {
+            addCriterion("commodityAddress <>", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressGreaterThan(String value) {
+            addCriterion("commodityAddress >", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressGreaterThanOrEqualTo(String value) {
+            addCriterion("commodityAddress >=", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressLessThan(String value) {
+            addCriterion("commodityAddress <", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressLessThanOrEqualTo(String value) {
+            addCriterion("commodityAddress <=", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressLike(String value) {
+            addCriterion("commodityAddress like", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressNotLike(String value) {
+            addCriterion("commodityAddress not like", value, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressIn(List<String> values) {
+            addCriterion("commodityAddress in", values, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressNotIn(List<String> values) {
+            addCriterion("commodityAddress not in", values, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressBetween(String value1, String value2) {
+            addCriterion("commodityAddress between", value1, value2, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityaddressNotBetween(String value1, String value2) {
+            addCriterion("commodityAddress not between", value1, value2, "commodityaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeIsNull() {
+            addCriterion("commodityTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeIsNotNull() {
+            addCriterion("commodityTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeEqualTo(String value) {
+            addCriterion("commodityTime =", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeNotEqualTo(String value) {
+            addCriterion("commodityTime <>", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeGreaterThan(String value) {
+            addCriterion("commodityTime >", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeGreaterThanOrEqualTo(String value) {
+            addCriterion("commodityTime >=", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeLessThan(String value) {
+            addCriterion("commodityTime <", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeLessThanOrEqualTo(String value) {
+            addCriterion("commodityTime <=", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeLike(String value) {
+            addCriterion("commodityTime like", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeNotLike(String value) {
+            addCriterion("commodityTime not like", value, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeIn(List<String> values) {
+            addCriterion("commodityTime in", values, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeNotIn(List<String> values) {
+            addCriterion("commodityTime not in", values, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeBetween(String value1, String value2) {
+            addCriterion("commodityTime between", value1, value2, "commoditytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommoditytimeNotBetween(String value1, String value2) {
+            addCriterion("commodityTime not between", value1, value2, "commoditytime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -1,7 +1,7 @@
 package com.zilizili.pojo;
 
 public class User {
-    private Integer userId;
+    private String userId;
 
     private String phone;
 
@@ -19,12 +19,14 @@ public class User {
 
     private String trueName;
 
-    public Integer getUserId() {
+    private String email;
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getPhone() {
@@ -89,5 +91,13 @@ public class User {
 
     public void setTrueName(String trueName) {
         this.trueName = trueName == null ? null : trueName.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 }

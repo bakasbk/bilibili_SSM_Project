@@ -48,15 +48,15 @@
 				<div class="header-top__nav">
 					<ul>
 						<li class="item item-home"><a href="../index.jsp">首页</a></li>
-						<li class="item"><a href="page/shopping" style="color: red;">会员购</a></li>
+						<li class="item"><a href="shopping" style="color: red;">会员购</a></li>
 					</ul>
 				</div>
 				<div class="header-top__user">
 					<div class="login-box">
-						<a href="page/login">登录</a> <span></span> <a href="page/regist">注册</a>
+						<a href="login">登录</a> <span></span> <a href="regist">注册</a>
 					</div>
 					<div class="user-post">
-						<a href="#" class="link">订单中心</a>
+						<a href="javascript:isLoginWithOrder()" class="link">订单中心</a>
 					</div>
 				</div>
 			</div>
@@ -93,20 +93,6 @@
 				<div id="good-div"></div>
 
 
-				<!--<div class="whole-pagination-wrapper">
-					<div class="pagination-wrapper">
-						<div class="arrow pagination-left-arrow disabled"></div>
-						
-						<div class="pagination">
-							
-							
-							<span class="pageNum active">1</span><span class="pageNum">2</span><span
-								class="pageNum">3</span><span class="pageNum">4</span> <span
-								class="pageNum">...</span> <span class="pageNum">63</span>
-						</div>
-						<div class="arrow pagination-right-arrow"></div>
-					</div>
-				</div>-->
 
 				<!---->
 				<div class="toolbar-wrapper">
@@ -140,6 +126,9 @@
 			<i class='czs-angle-right-l' id="xiaye"></i>
 		</div>
 		<!-- 分页工具 -->
+		<!-- 隐藏域 -->
+				<input type="hidden" id="totalPage-hidden" value=""/>
+				<input type="hidden" id="username-hidden" value="1"/><!-- ${sessionScope.account.user_id} -->
 		<div></div>
 		<footer id="footer">
 		<div class="page-width">
@@ -173,9 +162,53 @@
 		</footer>
 		<script src="../js/Jquery-V3.2.1.js"></script>
 		<script type="text/javascript">
+		
+		//加入购物车 是否登录
+		function isLoginWithCart(data){
+			if($("#username-hidden").val()==""||$("#username-hidden").val()==null){
+				alert("请先登录");
+				location.href="login";
+			}else{
+				var userId=$("#username-hidden").val();
+				addCart(data,userId);
+			}
+			
+		}
+		//订单中心  是否登录
+		function isLoginWithOrder(){
+			if($("#username-hidden").val()==""||$("#username-hidden").val()==null){
+				alert("请先登录");
+				location.href="login";
+			}else{
+				location.href="order";
+			}
+		}
+		
+		//加入购物车
+		function addCart(goodId,userId){
+			$.post("../shopping/addCart/"+goodId+"/"+userId,"",function(map){
+				var stock = map.good.commoditystock;
+				if(stock>1){
+					if(map.addCartRs==1){
+						alert("成功将"+map.good.commodityname+"加入到购物车！");
+ 						location.href="${pageContext.request.contextPath}/shopping/getCommodity/"+goodId+"/"+userId;
+					}else{
+						alert("票已售空！");
+					}
+				}
+				
+				
+			},"JSON");		
+		}
+		
+		
+		//分页
 		var currpage = 1;
 		var pagesize = 4;
+
+		//查询数据
 		function showList() {
+			
 			$("#good-div").html("");
 			$.post('../shopping/getAllCommodity/' + currpage + '/'+ pagesize,"",
 					function(data) {
@@ -184,61 +217,67 @@
 						var content = "";
 						for (var i = 0; i < pagesize; i++) {
 							content = "<div class='project-list-item'>"
-									+ "<div class='project-list-item-img' style='background-image:url(&quot;"
+									+ "<div class='project-list-item-img' style='background-image:url(&quot;.."
 									+ data.list[i].commodityimg
 									+ "&quot;);'></div>"
 									+ "<div class='project-list-item-detail'>"
 									+ "<div class='project-list-item-title'>"
 									+ data.list[i].commodityname
 									+ "</div><div class='project-list-item-time' style='height: 10px'>"
-									+ "<i class='czs-doc-file-l'></i>"
-									+ data.list[i].description
+									+ "<i class='czs-calendar'></i>"
+									+ data.list[i].commoditytime
 									+ "</div><div class='project-list-item-address'>"
 									+ "<span class='icon address-icon'></span>  <span class='city-name'>"
-									+ data.list[i].commoditystock
+									+ data.list[i].commodityaddress
 									+ "</span><span class='venue-name-and-address'></span>"
 									+ "</div><div class='project-list-item-price'><div class='not-free'>"
 									+ "<span class='price-symbol'><i class='czs-coin'></i></span> <span class='price'>"
 									+ data.list[i].commodityprice
 									+ "</span><span class='start'>元</span>"
-									+ "<i class='czs-shopping-cart' style='margin-left: 100px;'></i><span style='font-size: 14px;font-weight: bolder;'><a href='#'>加入购物车</a></span>"
+									+ "<i class='czs-shopping-cart' style='margin-left: 100px;'></i><span style='font-size: 14px;font-weight: bolder;'><a href='javascript:isLoginWithCart("+data.list[i].commodityid+")'>加入购物车</a></span>"
 									+ "</div></div></div></div>";
 							$("#good-div").append(content);
 						}
-						
-						$("#shouye").click(function(){
-							currpage=1;
-							alert(currpage);
-							showList();
-						});
-						
-						$("#totalPage").click(function(){
-							currpage=data.totalpage;
-							alert(currpage);
-							showList();
-						});
-						$("#shangye").click(function(){
-							if(currpage>1){
-								currpage=currpage-1;
-							}
-							alert(currpage);
-							showList();
-						});
-						
-						$("#xiaye").click(function(){
-							if(currpage<data.totalpage-1){
-								currpage=currpage+1;
-							}
-							alert(currpage);
-							showList();
-						});
-						
+						$("#totalPage-hidden").val(data.totalpage);
 					}, "JSON");
 		}
 			
+			//启动
 			$(function() {
 
 				showList();
+				
+				
+				//首页
+				$("#shouye").click(function(){
+					currpage=1;
+					showList();
+				});
+				//尾页
+				$("#totalPage").click(function(){
+					currpage=$("#totalPage-hidden").val();
+					showList();
+				});
+				//上一页
+				$("#shangye").click(function(){
+					if(currpage>1){
+						currpage=currpage-1;
+						showList();
+					}else{
+						alert("已是第一页");
+					}
+					
+				});
+				//下一页
+				$("#xiaye").click(function(){
+					if(currpage<=$("#totalPage-hidden").val()-1){
+						currpage=currpage+1;
+					}else{
+						alert("已是最后一页");
+					}
+					showList();
+				});
+				
 
 			})
 		</script>

@@ -1,175 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>biubiu</title>
-	<link rel="shortcut icon" href="favicons/1.png">
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/favicons/1.png">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
 </head>
 <body>
- <header id="header">
-    <div id="page_top">
-      <div class="bg-wrap">
-        <div class="bg"></div>
-        <div class="mask"></div>
-      </div>
-      <div class="header-top">
-        <div class="page-width clearfix">
-          <div class="header-top__nav">
-            <ul>
-              <li class="item item-home">
-                <a href="#">主站</a>
-              </li>
-              <li class="item"><a href="#">画友</a></li>
-              <li class="item">
-                <a href="#">游戏中心</a>
-                <div class="game-center header-hover">
-                  <div class="c clearfix">
-                    <div class="fl">
-                      <div class="imgbox">
-                        <a href="#">
-                          <img src="images/cont/game-center__img1.jpg" alt="#">
-                          <span>命运-冠位指定（Fate/GO）</span>
-                        </a>
-                      </div>
-                      <div class="game-img">
-                        <a href="#">
-                          <img src="images/cont/game_img1.png" alt="#">
-                          <span>刀剑乱舞</span>
-                        </a>
-                        <a href="#">
-                          <img src="images/cont/game_img2.png" alt="#">
-                          <span>刀剑乱舞</span>
-                        </a>
-                        <a href="#">
-                          <img src="images/cont/game_img3.jpg" alt="#">
-                          <span>刀剑乱舞</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="fr">
-                      <div class="game-list">
-                        <div class="title">
-                          <i></i>
-                          <a href="#">游戏论坛</a>
-                        </div>
-                        <div class="all">
-                          <a href="#">仙剑奇侠传幻璃镜</a>
-                          <a href="#">魔法禁书目录</a>
-                          <a href="#">萌王EX</a>
-                          <a href="#">妖精的衣橱</a>
-                          <a href="#">神代梦华谭</a>
-                          <a href="#">碧蓝航线</a>
-                          <a href="#">光明大陆</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="gameImg"></div>
-                </div>
-              </li>
-              <li class="item">
-                <a href="#">直播</a>
-                <div class="live-box header-hover">
-                  <div class="live-box__c">
-                    <div class="fl">
-                      <div class="title">热门直播:</div>
-                      <div class="cont">
-                        <a href="#">
-                          <img src="images/cont/live-box__img2.jpg" alt="#">
-                          <i>LIVE</i>
-                          <p>热爱电竞の三三</p>
-                        </a>
-                        <a href="#">
-                          <img src="images/cont/live-box__img2.jpg" alt="#">
-                          <i>LIVE</i>
-                          <p>大角虫漫画</p>
-                        </a>
-                        <a href="#">
-                          <img src="images/cont/live-box__img3.jpg" alt="#">
-                          <i>LIVE</i>
-                          <p>木本青</p>
-                        </a>
-                        <a href="#">
-                          <img src="images/cont/live-box__img4.gif" alt="#">
-                          <i>LIVE</i>
-                          <p>一只小鹿噜噜噜</p>
-                        </a>
-                        <a href="#">
-                          <img src="images/cont/live-box__img6.jpg" alt="#">
-                          <i>LIVE</i>
-                          <p>污叶妹屮</p>
-                        </a>
-                        <a href="#">
-                          <img src="images/cont/live-box__img6.jpg" alt="#">
-                          <i>LIVE</i>
-                          <p>污污_永远的魔法师_</p>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="fl">
-                      <div class="title">热门直播:</div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="item"><a href="page/shopping">会员购</a></li>
-              <li class="item">
-                <a href="#">移动端</a>
-                <!-- <div class="header-app header-hover">
-                  <i></i>
-                </div> -->
-              </li>
-            </ul>
-          </div>
-          <div class="header-top__user">
-            <div class="login-box">
-              <a href="login.jsp">登录</a>
-              <span></span>
-              <a href="regist.jsp">注册</a>
-            </div>
-            <div class="user-post">
-              <a href="#" class="link">投 稿</a>
-              <div class="user-post__hover header-hover">
-                <a href="videoFileTop.jsp" class="post">视频投稿</a>
-                <a href="videoFileTop.jsp" class="manage">投稿管理</a>
-                <a href="videoFileTop.jsp" class="create">创作中心</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="header-c">
-      <div class="page-width">
-        <a href="#" id="header_logo"></a>
-        <p id="header_title"></p>
-        <div id="search" class="clearfix">
-          <div class="search-rank">排行榜</div>
-          <div class="search-box">
-            <input type="text" class="text" placeholder="Search here...">
-            <a href="#" class="btn"><i></i></a>
-            <div class="search-history">
-              <div class="title">历史搜索</div>
-              <div class="list">
-                <a href="#">努巴尼欢乐秀<i></i></a>
-                <a href="#">主播真会玩守望篇<i></i></a>
-                <a href="#">主播真会玩女神篇<i></i></a>
-                <a href="#">暴暴勺暴暴<i></i></a>
-                <a href="#">OverWatch<i></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="header-title">哔哩哔哩 (゜-゜)つロ 干杯~</div>
-      </div>
-    </div>
-  </header>
 
+<%@include file="head.jsp"%>
   <nav id="nav">
     <div class="page-width clearfix">
       <ul class="nav-list">
@@ -607,7 +451,7 @@
           <a href="#" class="link">小黑屋</a>
         </li>
       </ul>
-      <div class="nav-gif"><img src="images/cont/nav_img.gif" alt="求领养"></div>
+      <div class="nav-gif"><img src="${pageContext.request.contextPath}/images/cont/nav_img.gif" alt="求领养"></div>
     </div>
   </nav>
 
@@ -615,10 +459,10 @@
     <div class="page-width clearfix">
       <div class="slider fl">
         <div class="slider-img">
-          <a href="#" slider-title="pic1"><img src="images/cont/slider_img1.png" alt="#"></a>
-          <a href="#" slider-title="pic2"><img src="images/cont/slider_img2.png" alt="#"></a>
-          <a href="#" slider-title="pic3"><img src="images/cont/slider_img3.png" alt="#"></a>
-          <a href="#" slider-title="pic4"><img src="images/cont/slider_img4.png" alt="#"></a>
+          <a href="#" slider-title="pic1"><img src="${pageContext.request.contextPath}/images/cont/slider_img1.png" alt="#"></a>
+          <a href="#" slider-title="pic2"><img src="${pageContext.request.contextPath}/images/cont/slider_img2.png" alt="#"></a>
+          <a href="#" slider-title="pic3"><img src="${pageContext.request.contextPath}/images/cont/slider_img3.png" alt="#"></a>
+          <a href="#" slider-title="pic4"><img src="${pageContext.request.contextPath}/images/cont/slider_img4.png" alt="#"></a>
         </div>
         <div class="slider-title"><p>pic1</p></div>
         <div class="slider-btn">
@@ -633,7 +477,7 @@
         <ul>
           <li>
             <a href="#">
-              <img src="video/images/c1.jpg" alt="#">
+              <img src="${pageContext.request.contextPath}/video/images/c1.jpg" alt="#">
               <div class="info">
                 <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
                 <p class="author">up主：丧尸の桑</p>
@@ -643,7 +487,7 @@
           </li>
           <li>
             <a href="#">
-              <img src="video/images/c2.jpg" alt="#">
+              <img src="${pageContext.request.contextPath}/video/images/c2.jpg" alt="#">
               <div class="info">
                 <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
                 <p class="author">up主：丧尸の桑</p>
@@ -653,7 +497,7 @@
           </li>
           <li>
             <a href="#">
-              <img src="video/images/c3.jpg" alt="#">
+              <img src="${pageContext.request.contextPath}/video/images/c3.jpg" alt="#">
               <div class="info">
                 <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
                 <p class="author">up主：丧尸の桑</p>
@@ -663,7 +507,7 @@
           </li>
           <li>
             <a href="#">
-              <img src="video/images/m1.jpg" alt="#">
+              <img src="${pageContext.request.contextPath}/video/images/m1.jpg" alt="#">
               <div class="info">
                 <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
                 <p class="author">up主：丧尸の桑</p>
@@ -673,7 +517,7 @@
           </li>
           <li>
             <a href="#">
-              <img src="video/images/m2.jpg" alt="#">
+              <img src="${pageContext.request.contextPath}/video/images/m2.jpg" alt="#">
               <div class="info">
                 <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
                 <p class="author">up主：丧尸の桑</p>
@@ -683,7 +527,7 @@
           </li>
           <li>
             <a href="#">
-              <img src="video/images/m3.jpg" alt="#">
+              <img src="${pageContext.request.contextPath}/video/images/m3.jpg" alt="#">
               <div class="info">
                 <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
                 <p class="author">up主：丧尸の桑</p>
@@ -711,7 +555,7 @@
           <ul class="pic-list__wrapper clearfix">
             <li class="item">
               <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
+                <img src="${pageContext.request.contextPath}/images/cont/main_pic.jpg" alt="#">
                 <span class="mask"></span>
                 <span class="time">3:39</span>
               </a>
@@ -721,7 +565,7 @@
             </li>
             <li class="item">
               <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
+                <img src="${pageContext.request.contextPath}/images/cont/main_pic.jpg" alt="#">
                 <span class="mask"></span>
                 <span class="time">3:39</span>
               </a>
@@ -731,7 +575,7 @@
             </li>
             <li class="item">
               <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
+                <img src="${pageContext.request.contextPath}/images/cont/main_pic.jpg" alt="#">
                 <span class="mask"></span>
                 <span class="time">3:39</span>
               </a>
@@ -741,7 +585,7 @@
             </li>
             <li class="item">
               <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
+                <img src="${pageContext.request.contextPath}/images/cont/main_pic.jpg" alt="#">
                 <span class="mask"></span>
                 <span class="time">3:39</span>
               </a>
@@ -757,7 +601,7 @@
             <span>|</span>
             <a href="#">最新投稿：5806</a>
           </div>
-          <a href="#" class="promote-side__img"><img src="images/cont/main_pic.jpg" alt="#"></a>
+          <a href="#" class="promote-side__img"><img src="${pageContext.request.contextPath}/images/cont/main_pic.jpg" alt="#"></a>
         </div>
       </div>
       <!-- 动画 -->
@@ -776,234 +620,10 @@
               <a href="#" class="more">更多<i></i></a>
             </div>
           </div>
-          <ul class="pic-list__wrapper clearfix tab-cont__item tab-cont__cur">
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="video/images/m4.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <ul class="pic-list__wrapper clearfix tab-cont__item">
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="images/cont/main_pic.jpg" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-          </ul>
+          <ul class="pic-list__wrapper clearfix tab-cont__item tab-cont__cur" id="videoContent">
+            
+            <!-- 数据填充 -->
+        </ul>
         </div>
         <div class="main-side fr" js-tab="true">
           <div class="main-side__title">
@@ -1025,7 +645,7 @@
                 <li class="item item-one">
                   <a href="#">
                     <i class="n1">1</i>
-                    <img src="images/cont/main-rank__img1.jpg" alt="#">
+                    <img src="${pageContext.request.contextPath}/images/cont/main-rank__img1.jpg" alt="#">
                     <div>
                       <p class="title">【1月】小林家的龙女仆 10【独家正版】</p>
                       <p class="mark">综合评分: 109.3万</p>
@@ -1055,7 +675,7 @@
                 <li class="item item-one">
                   <a href="#">
                     <i class="n1">1</i>
-                    <img src="images/cont/main-rank__img2.jpg" alt="#">
+                    <img src="${pageContext.request.contextPath}/images/cont/main-rank__img2.jpg" alt="#">
                     <div>
                       <p class="title">【1月】小林家的龙女仆 10【独家正版】</p>
                       <p class="mark">综合评分: 109.3万</p>
@@ -1086,6 +706,7 @@
           </div>
         </div>
       </div>
+      <hr />
   <footer id="footer">
     <div class="page-width">
       <ul class="footer-c clearfix">
@@ -1115,45 +736,57 @@
              <a href="#" class="app">
                <i></i>
                <em>手机端下载</em>
-               <img src="images/app-qrcode.png" alt="#">
+               <img src="${pageContext.request.contextPath}/images/app-qrcode.png" alt="#">
              </a>
              <a href="#" class="weibo">
                <i></i>
                <em>新浪微博</em>
-               <img src="images/weibo-qrcode.png" alt="#">
+               <img src="${pageContext.request.contextPath}/images/weibo-qrcode.png" alt="#">
              </a>
              <a href="#" class="weixin">
                <i></i>
                <em>官方微信</em>
-               <img src="images/weixin-arcode.gif" alt="#">
+               <img src="${pageContext.request.contextPath}/images/weixin-arcode.gif" alt="#">
              </a>
            </div>
          </li>
       </ul>
     </div>
   </footer>
-
-  <div id="sideBar">
-    <div class="sideBar-list">
-      <a href="#">动画</a>
-      <a href="#">番剧</a>
-      <a href="#">国创</a>
-      <a href="#">音乐</a>
-      <a href="#">舞蹈</a>
-      <a href="#">游戏</a>
-      <a href="#">科技</a>
-      <a href="#">生活</a>
-      <a href="#">鬼畜</a>
-      <a href="#">时尚</a>
-      <a href="#">广告</a>
-      <a href="#">娱乐</a>
-      <a href="#">电影</a>
-      <a href="#">TV剧</a>
-    </div>
     <div class="sideBar-line"></div>
     <a href="#" class="sideBar-toTop" id="backTop"></a>
   </div>
-  <script src="js/Jquery-V3.2.1.js"></script>
-<script src="js/script.js"></script>
+  <script src="${pageContext.request.contextPath}/js/Jquery-V3.2.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/script.js"></script>
+<script type="text/javascript">
+	$(function () {
+		selectVideos();
+	});
+
+	function selectVideos() {
+		$.getJSON("${pageContext.request.contextPath}/video/selectAll",function(data){
+			console.log(data);
+			var html = "";
+			for (var i = 0; i < data.list.length; i++) {
+				html+="<li class='item'>"+
+							"<a href='${pageContext.request.contextPath}/video/playVideo/"+data.list[i].videoid+"' class='img-link'>"+
+								"<img src='${pageContext.request.contextPath}"+data.list[i].viderimg +"' />"+
+								"<span class='mask'></span>"+
+								"<span class='time'>"+data.list[i].videotime+"</span>"+
+							"</a>"+
+							"<div class='img-info'>"+
+								"<a href='#'>"+data.list[i].videoname+"</a>"+
+								"<div class='btm'>"+
+									"<div class='user'><i></i>"+data.list[i].userId+"</div>"+
+									"<div class='online'><i></i>"+data.list[i].videoplaycount+"</div>"+
+								"</div>"+
+							"</div>"+
+					"</li>";
+			}
+					$("#videoContent").append(html);
+			
+		});
+	}
+</script>
 </body>
 </html>
